@@ -1,11 +1,8 @@
 import React, { Component } from 'react';
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
-import {
-  Route,
-  Link,
-  BrowserRouter as Router,
-} from 'react-router-dom';
+import { BrowserRouter, Route, Link } from 'react-router-dom';
+
 
 const Home = () => {
   return (
@@ -34,7 +31,7 @@ const VerifyForm = () => {
 class App extends Component {
   render() {
     return (
-      <Router>
+      <BrowserRouter>
         <div>
           <ul>
             <li><Link to='/'>Home</Link></li>
@@ -45,13 +42,15 @@ class App extends Component {
           <hr />
 
           <Route path='/' component={Home} />
-          <Route path='/new' component={NewProject} />
-          <Route path='/verify' component={VerifyProject} />
+          <Route path='/new' component={ProjectForm} />
+          <Route path='/verify' component={VerifyForm} />
         </div>
-      </Router>
+      </BrowserRouter>
     )
   }
 }
 
 export default App;
+
+
 
