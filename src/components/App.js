@@ -41,7 +41,7 @@ class App extends Component {
 
           <hr />
 
-          <Route path='/' component={Home} />
+          <Route exact path='/' component={Home} />
           <Route path='/new' component={ProjectForm} />
           <Route path='/verify' component={VerifyForm} />
         </div>
