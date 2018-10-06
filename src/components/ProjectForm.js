@@ -27,7 +27,14 @@ class ProjectForm extends React.Component {
   };
 
   handleSubmit(e) {
+    
+    
 
+    
+    //this.setState({step: 2});
+  };
+
+  notificationVerifyRequest() {
     var options = {
       "method": "POST",
       "hostname": "api.sendgrid.com",
@@ -40,14 +47,10 @@ class ProjectForm extends React.Component {
     }
 
     axios.post('https://api.sendgrid.com/v3/mail/send', 
-    {
-      "personalizations": [
+    {"personalizations": [
         {
-          "to": [
-            {
-              "email": "jo@jondionowens.com"
-            }
-          ],
+          "to": [{
+              "email": "jo@jondionowens.com"}],
           "subject": "Using Axios"
         }
       ],
@@ -65,11 +68,7 @@ class ProjectForm extends React.Component {
     ).then((response) => {
       console.log(response);
     })
-    
-
-    
-    //this.setState({step: 2});
-  };
+  }
 
   render() {
     if (this.state.step === 1) {
