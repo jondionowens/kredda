@@ -7,7 +7,7 @@ import { BrowserRouter, Route, Link } from 'react-router-dom';
 const Home = () => {
   return (
     <div>
-      <h2>Home</h2>
+      <h2>Homes</h2>
     </div>
   )
 };
@@ -29,24 +29,23 @@ const VerifyForm = () => {
 };
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      current: 'hme'
+    }
+  }
+
   render() {
-    return (
-      <BrowserRouter>
-        <div>
-          <ul>
-            <li><Link to='/'>Home</Link></li>
-            <li><Link to='/new'>New Project</Link></li>
-            <li><Link to='/verify'>Verify Project</Link></li>
-          </ul>
-
-          <hr />
-
-          <Route exact path='/' component={Home} />
-          <Route path='/new' component={ProjectForm} />
-          <Route path='/verify' component={VerifyForm} />
-        </div>
-      </BrowserRouter>
-    )
+    if(this.state.current === 'home') {
+      return (
+       <div>hello</div>
+      );
+    } else {
+      return (
+        <div>bye</div>
+      );
+    }
   }
 }
 
