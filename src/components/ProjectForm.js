@@ -2,6 +2,7 @@ import React from 'react';
 import FormProjectInfo from './FormProjectInfo';
 import FormVerifierInfo from './FormVerifierInfo';
 import http from 'https';
+import axios from 'axios';
 
 
 class ProjectForm extends React.Component {
@@ -38,28 +39,33 @@ class ProjectForm extends React.Component {
       }
     }
 
-      
-    var req = http.request(options, function (res) {
-      var chunks = [];
+    axios.post('https://api.sendgrid.com/v3/mail/send', 
+    {
+      "personalizations": [
+        {
+          "to": [
+            {
+              "email": "jo@jondionowens.com"
+            }
+          ],
+          "subject": "Using Axios"
+        }
+      ],
+      "from": {
+        "email": "from_address@example.com"
+      },
+      "content": [
+        {
+          "type": "text/plain",
+          "value": "Axios son...."
+        }
+      ]
+    },
+    options
+    ).then((response) => {
+      console.log(response);
+    })
     
-      res.on("data", function (chunk) {
-        chunks.push(chunk);
-      });
-    
-      res.on("end", function () {
-        var body = Buffer.concat(chunks);
-        console.log(body.toString());
-      });
-    });
-    
-    req.write(JSON.stringify({ personalizations: 
-       [ { to: [ { email: 'jo@jondionowens.com', name: 'John Doe' } ],
-           subject: 'Worked!' } ],
-      from: { email: 'sam.smith@example.com', name: 'Sam Smith' },
-      reply_to: { email: 'sam.smith@example.com', name: 'Sam Smith' },
-      content: [ { type: 'text/plain', value: 'Hello, World!' } ] }));
-    req.end();
-
 
     
     //this.setState({step: 2});
