@@ -2,7 +2,10 @@ import React from 'react';
 import { BrowserRouter, Route, Link } from 'react-router-dom';
 import queryString from 'query-string';
 import ProjectForm from './ProjectForm';
-import db from '../database/db'
+// import db from '../database/db';
+
+
+
 
 class App extends React.Component {
   constructor(props) {
