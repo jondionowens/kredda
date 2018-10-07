@@ -13,7 +13,11 @@
   "license": "ISC",
   "dependencies": {
     "@material-ui/core": "^3.1.2",
-    "express": "^4.16.3",
+    "axios": "^0.18.0",
+    "knex": "^0.15.2",
+    "mysql": "^2.16.0",
+    "mysql2": "^1.6.1",
+    "query-string": "^6.2.0",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
     "react-router-dom": "^4.3.1"

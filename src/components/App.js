@@ -1,55 +1,28 @@
-import React, { Component } from 'react';
-import Grid from '@material-ui/core/Grid';
-import Button from '@material-ui/core/Button';
+import React from 'react';
 import { BrowserRouter, Route, Link } from 'react-router-dom';
+import queryString from 'query-string';
+import ProjectForm from './ProjectForm';
+import db from '../database/db'
 
-
-const Home = () => {
-  return (
-    <div>
-      <h2>Homes</h2>
-    </div>
-  )
-};
-
-const ProjectForm = () => {
-  return (
-    <div>
-      <h2>Project Form</h2>
-    </div>
-  )
-};
-
-const VerifyForm = () => {
-  return (
-    <div>
-      <h2>Verify Form</h2>
-    </div>
-  )
-};
-
-class App extends Component {
+class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      current: 'hme'
+      currentStep: 1
     }
   }
 
   render() {
-    if(this.state.current === 'home') {
+    if(this.state.currentStep === 1) {
       return (
-       <div>hello</div>
-      );
-    } else {
-      return (
-        <div>bye</div>
-      );
+        <BrowserRouter>
+          <div>
+            <Route path='/' component={ProjectForm} />
+          </div>
+        </BrowserRouter>
+      )
     }
   }
 }
 
 export default App;
-
-
-
