@@ -2,7 +2,7 @@ import React from 'react';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 
-const FormVerifierInfo = (props) => {
+const VerifierForm = (props) => {
   return (
     <div>
       <TextField id="verifierName" type="text" label="Verifier name" onChange={props.handleChange} /><br/>
@@ -15,4 +15,4 @@ const FormVerifierInfo = (props) => {
   )
 }
 
-export default FormVerifierInfo;
+export default VerifierForm;

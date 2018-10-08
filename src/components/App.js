@@ -1,11 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Route, Link } from 'react-router-dom';
 import queryString from 'query-string';
-import ProjectForm from './ProjectForm';
-// import db from '../database/db';
-
-
-
+import MasterForm from './MasterForm';
 
 class App extends React.Component {
   constructor(props) {
@@ -20,7 +16,7 @@ class App extends React.Component {
       return (
         <BrowserRouter>
           <div>
-            <Route path='/' component={ProjectForm} />
+            <Route path='/' component={MasterForm} />
           </div>
         </BrowserRouter>
       )
