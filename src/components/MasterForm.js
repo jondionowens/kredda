@@ -3,18 +3,10 @@ import UserForm from './UserForm'
 import ProjectForm from './ProjectForm';
 import VerifierForm from './VerifierForm';
 import ProfileView from './ProfileView'
-import http from 'https';
 import axios from 'axios';
 import utils from '../utils/notifications';
-const firebase = require('firebase').initializeApp(
-  {
-    apiKey: "AIzaSyBa0JMgMxpKigpSwiN-S7QbuXFeVNW1IHc",
-    authDomain: "kredapp-740e9.firebaseapp.com",
-    databaseURL: "https://kredapp-740e9.firebaseio.com",
-    projectId: "kredapp-740e9",
-  }
-);
-
+import firebase from '../database/db.js';
+console.log('hi')
 class MasterForm extends React.Component {
   constructor(props) {
     super(props);
@@ -152,7 +144,7 @@ class MasterForm extends React.Component {
 
     if (this.state.step === 4) {
       return (
-        <ProfileView userId={this.state.userRef}handleChange={this.handleChange.bind(this)} handleSubmit={this.handleSubmit.bind(this)} verified={false}/>
+        <ProfileView userId={this.state.userRef} handleChange={this.handleChange.bind(this)} handleSubmit={this.handleSubmit.bind(this)} verified={false}/>
       )
     }
   }
