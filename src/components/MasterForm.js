@@ -2,6 +2,7 @@ import React from 'react';
 import UserForm from './UserForm'
 import ProjectForm from './ProjectForm';
 import VerifierForm from './VerifierForm';
+import ProfileView from './ProfileView'
 import http from 'https';
 import axios from 'axios';
 import utils from '../utils/notifications';
@@ -13,9 +14,6 @@ const firebase = require('firebase').initializeApp(
     projectId: "kredapp-740e9",
   }
 );
-
-
-
 
 class MasterForm extends React.Component {
   constructor(props) {
@@ -66,11 +64,6 @@ class MasterForm extends React.Component {
           description: this.state.projectDescription,
         }
         const projectRef = projectsRef.push(newProject);
-
-        // THIS IS HOW YOU GET DATA FROM THE DATABASE
-        // const projects = usersRef.child(this.state.userRef).on('value', function(snapshot) {
-        //   console.log(snapshot.val().projectsCreated);
-        // })
         
         usersRef.child(this.state.userRef+'/projects/creator').push(projectRef.key);
         this.setState({step: 3, projectRef: projectRef.key});
@@ -159,7 +152,7 @@ class MasterForm extends React.Component {
 
     if (this.state.step === 4) {
       return (
-        <ProfileView handleChange={this.handleChange.bind(this)} handleSubmit={this.handleSubmit.bind(this)} verified={false}/>
+        <ProfileView userId={this.state.userRef}handleChange={this.handleChange.bind(this)} handleSubmit={this.handleSubmit.bind(this)} verified={false}/>
       )
     }
   }
