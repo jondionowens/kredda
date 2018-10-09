@@ -4,7 +4,8 @@ import ProjectForm from './ProjectForm';
 import VerifierForm from './VerifierForm';
 import http from 'https';
 import axios from 'axios';
-import utils from '../utils/notifications'
+import utils from '../utils/notifications';
+import firebase from 'firebase';
 
 
 class MasterForm extends React.Component {
@@ -40,7 +41,9 @@ class MasterForm extends React.Component {
           creator: true,
           verifier: false
         }
-        console.log(newUser);
+        
+        firebase.database().ref('users').set(newUser);
+        
         this.setState({step: 2});
       } else {
         alert('All fields required');

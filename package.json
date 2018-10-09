@@ -14,6 +14,8 @@
   "dependencies": {
     "@material-ui/core": "^3.1.2",
     "axios": "^0.18.0",
+    "firebase": "^5.5.3",
+    "firebase-admin": "^6.0.0",
     "knex": "^0.15.2",
     "mssql": "^4.2.1",
     "mysql": "^2.16.0",
