@@ -10,7 +10,7 @@ class ProfileView extends React.Component {
     this.state = {
       // user: props.userId,
       user: '-LOPS342YelDQCwBafda',
-      projects: {}
+      projects: []
     }
   }
 
@@ -25,15 +25,29 @@ class ProfileView extends React.Component {
     var projectsRef = ref.child('projects');
     const that = this;
     
-    const projects = usersRef.child(this.state.user).on('value', function(snapshot) {
-      that.setState({projects: snapshot.val().projects.creator})
-    });
-    console.log(projects)
+    usersRef.child(this.state.user).once('value')
+      .then((snapshot) => {
+        const projects = snapshot.val().projects.creator;
+        return projects;
+      })
+      .then((projects) => {
+        const projectsArray = [];
+        for (var project in projects) {
+          projectsArray.push(project);
+        }
+        that.setState({projects: projectsArray});
+      })
+      
+      
+      // console.log(projectsArray);
+
   }
 
   render() {
     return (
-      <div>User Profile Component!</div>
+      this.state.projects.map((project) => {
+        return <li>{project}</li>;
+      })
     )
   }
 }
