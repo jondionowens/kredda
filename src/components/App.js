@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Route, Link } from 'react-router-dom';
 import queryString from 'query-string';
-import MasterForm from './MasterForm';
+import {MasterForm} from './MasterForm';
 
 class App extends React.Component {
   constructor(props) {

@@ -5,7 +5,16 @@ import VerifierForm from './VerifierForm';
 import http from 'https';
 import axios from 'axios';
 import utils from '../utils/notifications';
-import firebase from 'firebase';
+const firebase = require('firebase').initializeApp(
+  {
+    apiKey: "AIzaSyBa0JMgMxpKigpSwiN-S7QbuXFeVNW1IHc",
+    authDomain: "kredapp-740e9.firebaseapp.com",
+    databaseURL: "https://kredapp-740e9.firebaseio.com",
+    projectId: "kredapp-740e9",
+  }
+);
+
+
 
 
 class MasterForm extends React.Component {
@@ -32,19 +41,19 @@ class MasterForm extends React.Component {
   };
 
   handleSubmit(e) {
+    var ref = firebase.database().ref();
+    var usersRef = ref.child('users');
+    var projectsRef = ref.child('projects');
+    
     if (this.state.step === 1) {
       if (this.state.creatorName && this.state.creatorEmail) {
         const newUser = {
           firstName: this.state.creatorName.split(' ').slice(0, -1).join(' '),
           lastName: this.state.creatorName.split(' ').slice(-1).join(' '),
           email: this.state.creatorEmail,
-          creator: true,
-          verifier: false
         }
-        
-        firebase.database().ref('users').set(newUser);
-        
-        this.setState({step: 2});
+        const userRef = usersRef.push(newUser);
+        this.setState({step: 2, userRef: userRef.key});
       } else {
         alert('All fields required');
       }
@@ -56,8 +65,15 @@ class MasterForm extends React.Component {
           projectName: this.state.projectName,
           description: this.state.projectDescription,
         }
-        console.log(newProject);
-        this.setState({step: 3});
+        const projectRef = projectsRef.push(newProject);
+
+        // THIS IS HOW YOU GET DATA FROM THE DATABASE
+        // const projects = usersRef.child(this.state.userRef).on('value', function(snapshot) {
+        //   console.log(snapshot.val().projectsCreated);
+        // })
+        
+        usersRef.child(this.state.userRef+'/projects/creator').push(projectRef.key);
+        this.setState({step: 3, projectRef: projectRef.key});
       } else {
         alert('All fields required');
       }
@@ -66,12 +82,16 @@ class MasterForm extends React.Component {
     if (this.state.step === 3) {
       if (this.state.verifierName && this.state.verifierEmail) {
         const newVerifier = {
-          verifierName: this.state.verifierName,
-          verifierEmail: this.state.verifierEmail,
-          message: this.state.message
+          firstName: this.state.verifierName.split(' ').slice(0, -1).join(' '),
+          lastName: this.state.verifierName.split(' ').slice(-1).join(' '),
+          email: this.state.verifierEmail,
         }
-        console.log(newVerifier);
-        this.setState({step: 3});
+        const verifierRef = usersRef.push(newVerifier);
+        this.setState({verifierRef: verifierRef.key}, () => {
+          usersRef.child(this.state.verifierRef+'/projects/verifier').push(this.state.projectRef);
+        });
+        
+        this.setState({step: 4});
       } else {
         alert('All fields required');
       }
@@ -136,8 +156,17 @@ class MasterForm extends React.Component {
         <VerifierForm handleChange={this.handleChange.bind(this)} handleSubmit={this.handleSubmit.bind(this)} goBack={this.goBack.bind(this)}/>
       )
     }
+
+    if (this.state.step === 4) {
+      return (
+        <ProfileView handleChange={this.handleChange.bind(this)} handleSubmit={this.handleSubmit.bind(this)} verified={false}/>
+      )
+    }
   }
 }
 
-export default MasterForm;
+module.exports = {
+  MasterForm: MasterForm,
+  firebase: firebase
+}
 
