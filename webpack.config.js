@@ -10,7 +10,7 @@ module.exports = {
         tls: 'empty',
       },
     output: {
-        path: path.join(__dirname, "/dist"),
+        path: path.join(__dirname, "/public"),
         filename: "index_bundle.js"
     },
     module: {
