@@ -6,7 +6,6 @@ import ProfileView from './ProfileView'
 import axios from 'axios';
 import utils from '../utils/notifications';
 import firebase from '../database/db.js';
-console.log('hi')
 class MasterForm extends React.Component {
   constructor(props) {
     super(props);
