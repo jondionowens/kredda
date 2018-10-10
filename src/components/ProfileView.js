@@ -2,6 +2,8 @@ import React from 'react';
 import axios from 'axios';
 import utils from '../utils/notifications';
 import firebase from '../database/db.js';
+import Paper from '@material-ui/core/Paper';
+import Typography from '@material-ui/core/Typography';
 import _ from 'lodash';
 
 
@@ -9,8 +11,7 @@ class ProfileView extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      // user: props.userId,
-      user: '-LOPS342YelDQCwBafda',
+      user: props.userId,
       projects: [],
       isLoading: true
     }
@@ -60,9 +61,23 @@ class ProfileView extends React.Component {
     } else {
       return (
         this.state.projects.map((project) => {
-          return <li>{project.projectName} | {project.description}</li>;
+          return (
+            <div>
+              <Paper elevation={1}>
+                <Typography variant="h5" component="h3">
+                  {project.projectName}
+                </Typography>
+                <Typography component="p">
+                {project.description}
+                </Typography>
+                <Typography component="p">
+                {project.verified ? "Project Verified!" : "Project not verified!"}
+                </Typography>
+              </Paper>
+            </div>
+          )
         })
-      )
+      );
     }
   }
 
@@ -70,3 +85,4 @@ class ProfileView extends React.Component {
 }
 
 export default ProfileView;
+

@@ -53,6 +53,7 @@ class MasterForm extends React.Component {
         const newProject = {
           projectName: this.state.projectName,
           description: this.state.projectDescription,
+          verified: false
         }
         const projectRef = projectsRef.push(newProject);
         
@@ -76,6 +77,7 @@ class MasterForm extends React.Component {
         });
         
         this.setState({step: 4});
+        utils.notificationVerifyRequest(this.state);
       } else {
         alert('All fields required');
       }
@@ -84,42 +86,6 @@ class MasterForm extends React.Component {
 
   goBack() {
     this.setState({step: 1});
-  }
-
-  notificationVerifyRequest() {
-    var options = {
-      "method": "POST",
-      "hostname": "api.sendgrid.com",
-      "port": null,
-      "path": "/v3/mail/send",
-      "headers": {
-        "authorization": "Bearer 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",
-        "content-type": "application/json"
-      }
-    }
-
-    axios.post('https://api.sendgrid.com/v3/mail/send', 
-    {"personalizations": [
-        {
-          "to": [{
-              "email": "jo@jondionowens.com"}],
-          "subject": "Using Axios"
-        }
-      ],
-      "from": {
-        "email": "from_address@example.com"
-      },
-      "content": [
-        {
-          "type": "text/plain",
-          "value": "Axios son...."
-        }
-      ]
-    },
-    options
-    ).then((response) => {
-      console.log(response);
-    })
   }
 
   render() {

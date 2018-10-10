@@ -11,7 +11,7 @@ const notificationVerifyRequest = (details) => {
   ${details.projectName} </br>
   <br/>
   Please take a moment to verify by clicking the following link:
-  <a href="http://www.google.com">http://www.kredapp.com/users/projects/12345</a>`;
+  <a href="http://127.0.0.1:8080">http://www.kredapp.com/users/projects/12345</a>`;
 
   const options = {
     "method": "POST",
@@ -37,7 +37,7 @@ const notificationVerifyRequest = (details) => {
     },
     "content": [
       {
-        "type": "text/plain",
+        "type": "text/html",
         "value": emailTemplate
       }
     ]
