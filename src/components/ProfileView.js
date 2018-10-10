@@ -17,7 +17,12 @@ class ProfileView extends React.Component {
   }
 
   componentDidMount() {
-    this.getUserProjects(this.state.user);
+    const projects = this.getUserProjects(this.state.user);
+    this.setState({projects: projects}, () => {
+      setTimeout(() => {
+        this.setState({isLoading: false});
+      }, 1000)
+    });
   }
   
   getUserProjects(userId) {
@@ -37,7 +42,6 @@ class ProfileView extends React.Component {
 
       // Use the project ids to get the project objects
       .then((projectsIdsArray) => {
-        console.log(projectsIdsArray);
         projectsIdsArray.forEach((projectId) => {
           projectsRef.child(projectId).once('value')
             .then((project) => {
@@ -47,15 +51,7 @@ class ProfileView extends React.Component {
         })
       })
 
-      .then(() => {
-        that.setState({projects: projectsArray, isLoading: false}, () => {
-          that.forceUpdate();
-        });
-      })
-
-      // .then(() => {
-      //   that.setState({isLoading: false});
-      // })
+      return projectsArray;
   }
 
   render() {
