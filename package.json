@@ -27,7 +27,6 @@
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
     "react-router-dom": "^4.3.1",
-    "webpack-dev-server": "^3.1.9"
   },
   "devDependencies": {
     "babel": "^6.23.0",
