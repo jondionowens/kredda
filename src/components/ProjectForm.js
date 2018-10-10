@@ -1,51 +1,16 @@
 import React from 'react';
-import FormProjectInfo from './FormProjectInfo';
-import FormVerifierInfo from './FormVerifierInfo';
-import http from 'https';
-import axios from 'axios';
+import Button from '@material-ui/core/Button';
+import TextField from '@material-ui/core/TextField';
 
-
-class ProjectForm extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      step: 1,
-      projectName: '',
-      projectRole: '',
-      projectDate: '',
-      verifierName: '',
-      verifierEmail: '',
-      messageToVerifier: ''
-    }
-  };
-
-  handleChange(e) {
-    const targetField = e.target.id;
-    const stateChange = {};
-    stateChange[targetField] = e.target.value;
-    this.setState(stateChange);
-  };
-
-  handleSubmit(e) {
-
-  };
-
-  
-
-  render() {
-    if (this.state.step === 1) {
-      return (
-        <FormProjectInfo handleChange={this.handleChange.bind(this)} handleSubmit={this.handleSubmit.bind(this)}/>
-      )
-    }
-
-    if (this.state.step === 2) {
-      return (
-        <FormVerifierInfo handleChange={this.handleChange} handleSubmit={this.handleSubmit.bind(this)}/>
-      )
-    }
-  }
+const ProjectForm = (props) => {
+  return (
+    <div>
+      <TextField id="projectName" type="text" label="Project name" onChange={props.handleChange} /><br/>
+      <TextField id="role" type="text" label="Your role" onChange={props.handleChange} /><br/>
+      <TextField id="projectDescription" label="Project description" type="text" onChange={props.handleChange} /><br/><br/>
+      <Button variant="contained" color="primary" onClick={props.handleSubmit}>Next</Button>
+    </div>
+  )
 }
 
 export default ProjectForm;
-
