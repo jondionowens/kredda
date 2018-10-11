@@ -10,7 +10,8 @@ class Login extends React.Component {
     super();
     this.state = {
       step: 1,
-      userId: {}
+      userId: {},
+      userEmail: ''
     }
   }
 
@@ -25,7 +26,7 @@ class Login extends React.Component {
     var ref = firebase.database().ref();
     var usersRef = ref.child('users');
     usersRef.orderByChild('email')
-    .equalTo('jo@jondionowens.com')
+    .equalTo(this.state.userEmail)
     .on('value', (snapshot) => {
       const loggedInUser = Object.keys(snapshot.val())[0];
       this.setState({userId: loggedInUser, step: 2}); 
