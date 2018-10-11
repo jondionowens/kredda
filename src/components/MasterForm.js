@@ -56,9 +56,13 @@ class MasterForm extends React.Component {
           verified: false
         }
         const projectRef = projectsRef.push(newProject);
-        
-        usersRef.child(this.state.userRef+'/projects/creator').push(projectRef.key);
-        this.setState({step: 3, projectRef: projectRef.key});
+        this.setState({newProjectId: projectRef.key}, () => {
+          console.log(this.state.newProjectId);
+        });
+        usersRef.child(this.state.userRef+'/projects/creator').push(projectRef.key)
+          .then((snapshot) => {
+            this.setState({step: 3});
+          })
       } else {
         alert('All fields required');
       }

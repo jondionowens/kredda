@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter, Route, Link } from 'react-router-dom';
 import queryString from 'query-string';
 import {MasterForm} from './MasterForm';
+import {MasterVerificationForm} from './MasterVerificationForm';
 
 class App extends React.Component {
   constructor(props) {
@@ -16,7 +17,8 @@ class App extends React.Component {
       return (
         <BrowserRouter>
           <div>
-            <Route path='/' component={MasterForm} />
+            <Route exact path='/' component={MasterForm} />
+            <Route path='/verify' component={MasterVerificationForm} />
           </div>
         </BrowserRouter>
       )

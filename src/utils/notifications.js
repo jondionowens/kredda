@@ -6,12 +6,12 @@ import axios from 'axios';
 ///////////////////////////////////////////////
 
 const notificationVerifyRequest = (details) => {
-  const emailTemplate = `Hi, </br>
+  const emailTemplate = `Hi, ${details.verifierName.split(' ').slice(0, -1).join(' ')}<br/><br/>
   Your contact ${details.creatorName} has requested your assistance in verifiying their contribution on the following project: <br/>
-  ${details.projectName} </br>
+  <b>${details.projectName}</b> </br>
   <br/>
-  Please take a moment to verify by clicking the following link:
-  <a href="http://127.0.0.1:8080">http://www.kredapp.com/users/projects/12345</a>`;
+  Please take a moment to verify by clicking the following link:<br/>
+  <a href="https://kredapp-740e9.firebaseapp.com/verify?projectId=${details.newProjectId}">http://www.kredapp.com/verify</a>`;
 
   const options = {
     "method": "POST",
