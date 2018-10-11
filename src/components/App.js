@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Link } from 'react-router-dom';
 import queryString from 'query-string';
 import {MasterForm} from './MasterForm';
 import {MasterVerificationForm} from './MasterVerificationForm';
+import {Login} from './Login';
 
 class App extends React.Component {
   constructor(props) {
@@ -19,6 +20,7 @@ class App extends React.Component {
           <div>
             <Route exact path='/' component={MasterForm} />
             <Route path='/verify' component={MasterVerificationForm} />
+            <Route path='/login' component={Login} />
           </div>
         </BrowserRouter>
       )

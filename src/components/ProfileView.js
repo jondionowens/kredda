@@ -5,6 +5,7 @@ import firebase from '../database/db.js';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import _ from 'lodash';
+import rand from 'random-key';
 
 
 class ProfileView extends React.Component {
@@ -61,12 +62,11 @@ class ProfileView extends React.Component {
     } else {
       return (
         this.state.projects.map((project) => {
+          const randomKey = rand.generateDigits(5);
           return (
-            <div>
+            <div key={randomKey}>
               <Paper elevation={1}>
-                <Typography variant="h5" component="h3">
-                  {project.projectName}
-                </Typography>
+                <h3>{project.projectName}</h3>
                 <Typography component="p">
                 {project.description}
                 </Typography>
