@@ -11,8 +11,8 @@ module.exports = {
       },
     output: {
         path: path.join(__dirname, "/public"),
-        filename: "index_bundle.js",
-        publicPath: '/'
+        filename: "bundle.js",
+        publicPath: ''
     },
     module: {
         rules: [{
