@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "local": "http-server ./public",
+    "react-dev": "webpack -d --watch",
+    "server-dev": "nodemon server.js",
     "start": "node server.js",
     "heroku-postbuild": "webpack -p",
     "deploy": "git push heroku master"
