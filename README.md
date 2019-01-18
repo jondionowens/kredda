@@ -8,6 +8,14 @@ And from the perspective of the candidate, you have no way to assure the hiring 
 #### What is it, and what will it be?
 Kredda is being built to allow designers, artists, writers, and developers to request credit for their contributions to projects.
 
+On the flip side, the application would be a resource for hiring managers to see which projects a candidate is showing have been verified by a screened approver, like their manager.
+
+Approvers would go through a screening process to assess their reliability as a source of truth.
+
+## Ultimate goal
+
+Kredda's ultimate long term goal is to become the defacto standard for verifying an individuals actual contribution to project in the wild. To eliminate the theft of work, and to allow creators to get the verified credit they deserve.
+
 
 ## Progress
 
