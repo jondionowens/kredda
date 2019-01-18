@@ -1,7 +1,7 @@
 {
-  "name": "rpt09-mvp",
+  "name": "kredda-app",
   "version": "1.0.0",
-  "description": "",
+  "description": "Node based crediting applications for creators",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -17,6 +17,7 @@
     "@material-ui/core": "^3.1.2",
     "axios": "^0.18.0",
     "bluebird": "^3.5.2",
+    "dotenv": "^6.2.0",
     "express": "^4.16.3",
     "firebase": "^5.7.2",
     "knex": "^0.15.2",
