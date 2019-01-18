@@ -14,12 +14,11 @@ Approvers would go through a screening process to assess their reliability as a 
 
 ## Ultimate goal
 
-Kredda's ultimate long term goal is to become the defacto standard for verifying an individuals actual contribution to project in the wild. To eliminate the theft of work, and to allow creators to get the verified credit they deserve.
-
+Kredda's long term goal is to become the defacto standard for verifying an individuals actual contribution to projects in the wild. To eliminate the theft of work, and to allow creators to get the verified credit they deserve.
 
 ## Progress
 
-Kredda is a work in progress currently in working prototype form. I hope to complete a production ready application by 2020.
+Kredda is a work in progress currently in working prototype form. I hope to complete a production ready v1.0.0 application by 2020.
 
 ## Current stack
 
